@@ -19,7 +19,7 @@ def index():
 # app route for page that will scrape new data using code we write
 @app.route("/scrape")
 def scrape():
-   mars = mongo.db.mars_app
+   mars = mongo.db.mars
    mars_data = scrape.scrape_all()
    mars.update_one({}, {"$set":mars_data}, upsert=True)
    return redirect('/', code=302)
